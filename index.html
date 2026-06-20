@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/ea2a345d4c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="music-player">
+            <nav>
+                <div class="circle">
+                    <i class="fa-solid fa-angle-left"></i>
+                </div>
+                 <div class="circle">
+                    <i class="fa-solid fa-bars"></i>     
+                </div>
+            </nav>
+            <img src="https://www.hungamaexpress.com/assets/uploads/updates/2026-04-17/44991_7848720_two_updates.jpg" alt="music player" class="music-image">
+            <h1>Thassadiya</h1>
+            <p>Ft.Chinmayi Sripada </p>
+            <audio id="song" preload="auto">
+                <source src="Thassadiya.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <input type="range" id="progress-bar" value="0">
+            <div class="controls">
+                <div class="btn"><i class="fa-solid fa-backward"></i></div>
+                <div class="btn play" id="playBtn"><i class="fa-solid fa-play"></i></div>
+                <div class="btn"><i class="fa-solid fa-forward"></i></div>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        let song = document.getElementById("song");
+        let playBtn = document.getElementById("playBtn");
+        let progressBar = document.getElementById("progress-bar");
+
+        song.onloadedmetadata = function() {
+            progressBar.max = song.duration;
+            progressBar.value = song.currentTime;
+        };
+
+        playBtn.onclick = function() {
+            if (song.paused) {
+                song.play();
+                playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+            } else {
+                song.pause();
+                playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+            }
+        };
+
+        song.ontimeupdate = function() {
+            progressBar.value = song.currentTime;
+        };
+
+        progressBar.oninput = function() {
+            song.currentTime = progressBar.value;
+        };
+    </script>
+</body>
+</html>
+
+
