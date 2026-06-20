@@ -13,6 +13,8 @@ This is a simple music player I built using HTML, CSS, and JavaScript. The idea 
 * Clean UI with album-style design
 
 ---
+<img width="721" height="733" alt="image" src="https://github.com/user-attachments/assets/2c304b02-1866-4f30-987b-94f7c274b629" />
+
 
 ## How I built it
 
